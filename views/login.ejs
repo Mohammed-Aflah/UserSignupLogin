@@ -1,0 +1,47 @@
+<%-include('./partials/header.ejs') %>
+    <main class="card-container slideUp-animation d-flex justify-content-center">
+        <form action="/login" method="post">
+            <div class="d-flex">
+
+                <a href="/login" class="submit-btn mx-2 btn btn-success">User Login</a>
+                <a href="/admin/" class="submit-btn mx-2 btn btn-success">Admin Login</a>
+            </div>
+            <div class="form-container slideRight-animation">
+
+                <h1 class="form-header">
+                    Login
+                </h1>
+
+                <div class="input-container">
+                    <label for="l-name"></label>
+                    <input type="email" name="email" id="l-name" required>
+                    <span>
+                        Email
+                    </span>
+                    <div class="error"></div>
+                </div>
+
+                <div class="input-container">
+                    <label for="mail">
+                    </label>
+                    <input type="password" name="password" id="mail" required>
+                    <span>
+                        Password
+                    </span>
+                    <div class="error"></div>
+                </div>
+
+
+
+
+                <div id="btm">
+                    <button type="submit" class="submit-btn">Login</button>
+                    <p class="btm-text">
+                        Already have an account..? <a href="/signup" class="btm-text-highlighted"> Signup</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <%-include('./partials/footer.ejs') %>
