@@ -5,8 +5,13 @@ const port = process.env.PORT;
 const session = require("express-session");
 const router = require("./routes/router");
 const admiRoute = require("./routes/adminroute");
+// const nocache=require('nocache')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Accessing Request Body value in Readable format
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store");
+  next();
+});
 app.use(
   session({
     secret: process.env.SECRET,

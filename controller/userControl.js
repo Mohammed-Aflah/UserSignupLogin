@@ -18,6 +18,7 @@ function Signup(userData) {
 }
 function Login(userData) {
   return new Promise(async (resolve, reject) => {
+    let response = { status: false };
     try {
       let getSignupPassword = await Db.findOne({ email: userData.email });
       console.log(getSignupPassword + "___data");
@@ -25,13 +26,25 @@ function Login(userData) {
         userData.password,
         getSignupPassword.password
       );
-      resolve(isMatch);
+      if (isMatch) {
+        response.status = true;
+      } else {
+        response.status = false;
+      }
+      resolve(response);
     } catch (err) {
       reject(err);
     }
   });
 }
+function getUserName(mail) {
+  return new Promise(async (resolve, reject) => {
+    let data = await Db.findOne({ email: mail });
+    resolve(data.username);
+  });
+}
 module.exports = {
   Signup,
   Login,
+  getUserName,
 };

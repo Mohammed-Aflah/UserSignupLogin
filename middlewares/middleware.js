@@ -1,8 +1,8 @@
 function verifySignup(req, res, next) {
-  if (req.session.signIn) {
+  if (req.session.logined) {
     next();
   } else {
-    res.redirect("/signup");
+    res.redirect("/login");
   }
 }
-module.exports = {verifySignup};
+module.exports = { verifySignup };

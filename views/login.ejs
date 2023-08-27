@@ -1,47 +1,41 @@
 <%-include('./partials/header.ejs') %>
-    <main class="card-container slideUp-animation d-flex justify-content-center">
-        <form action="/login" method="post">
-            <div class="d-flex">
-
-                <a href="/login" class="submit-btn mx-2 btn btn-success">User Login</a>
-                <a href="/admin/" class="submit-btn mx-2 btn btn-success">Admin Login</a>
+<main class="home flex-column">
+        <div class="option">
+            <a href="/login">User Login</a>
+            <a href="/admin/">Admin Login</a>
+        </div>
+        <%if(err) { %>
+            <div class="cls">
+                <h5 style="font-size: 18px;position:relative;letter-spacing: normal;" class="m-0 p-0"><%-err%>
+                </h5>
+                <a href="/close"  class="material-symbols-outlined">close</a>
             </div>
-            <div class="form-container slideRight-animation">
-
-                <h1 class="form-header">
-                    Login
-                </h1>
-
-                <div class="input-container">
-                    <label for="l-name"></label>
-                    <input type="email" name="email" id="l-name" required>
-                    <span>
-                        Email
-                    </span>
-                    <div class="error"></div>
-                </div>
-
-                <div class="input-container">
-                    <label for="mail">
-                    </label>
-                    <input type="password" name="password" id="mail" required>
-                    <span>
-                        Password
-                    </span>
-                    <div class="error"></div>
-                </div>
-
-
-
-
-                <div id="btm">
-                    <button type="submit" class="submit-btn">Login</button>
-                    <p class="btm-text">
-                        Already have an account..? <a href="/signup" class="btm-text-highlighted"> Signup</a>
-                    </p>
-                </div>
-            </div>
+            <% } %>
+    <div class="login_container">
+        <h1 class="text-center text-white">Login</h1>
+        <form action="/login" method="post" class="form">
+                    <div class="controls">
+                        <div class="input input1">
+                            <input type="email" name="email" id="mail">
+                            <label for="" id="email">Email</label>
+                        </div>
+                        <div class="input input2">
+                            <input type="password" name="password" id="pass" autocomplete="off" required>
+                            <img src="/images/visible.png" alt=""
+                                style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
+                            <label for="" id="passLabel">Password</label>
+                        </div>
+                        <div class="input input3">
+                            <button type="submit" id="sub_btn">Login</button>
+                        </div>
+                        <div class="input input3 text-right d-flex align-items-center justify-content-end">
+                            <a href="/signup" class="text-left text-decoration-none">Signup</a>
+                        </div>
+                    </div>
         </form>
-    </main>
+    </div>
+</main>
 
     <%-include('./partials/footer.ejs') %>
+
+    
