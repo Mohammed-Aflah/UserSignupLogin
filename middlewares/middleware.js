@@ -5,4 +5,5 @@ function verifySignup(req, res, next) {
     res.redirect("/login");
   }
 }
+
 module.exports = { verifySignup };

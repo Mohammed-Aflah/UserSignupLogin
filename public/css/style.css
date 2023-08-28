@@ -22,40 +22,41 @@
   color: #fff;
   height: 100vh;
 }
-.home .option{
-  
+.option {
   height: auto;
   display: flex;
   align-items: center;
   justify-self: center;
   margin-bottom: 10px;
-
 }
-.home .option a{
-  background-color:#023523;
+ .option a {
+  background-color: rgb(30, 107, 209);
   color: #fff;
-  text-decoration:none ;
+  text-decoration: none;
   border-radius: 5px;
   margin: 5px;
   padding: 10px;
   z-index: 99;
   position: relative;
   overflow: hidden;
+  /* box-shadow: 1px 10px 50px 10px rgb(23, 22, 72); */
 }
-.home .option a::after{
-  content: '';
+.option a::after {
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 0;
   height: 0;
-  background-color: #004d32;
-  transition: .4s;
+  background-color: rgb(43, 122, 225);
+  transition: 0.4s;
   z-index: -1;
   border-radius: 5px;
 }
-.home .option a:hover::after{
+ .option a:hover::after {
   width: 100%;
+  color: #fff;
+  text-decoration: none;
   height: 100%;
 }
 .card-container .form-container {
@@ -179,15 +180,50 @@ h5 {
 .home .login_container .controls .input3 button:active {
   box-shadow: inset 1px 1px 3px 1px gray;
 }
-.cls{
+.cls {
   /* background-color: rgb(181, 143, 143); */
   border: 1px solid #fff;
   margin-bottom: 10px;
   color: rgb(207, 77, 77);
-
 }
 @media (max-width: 487px) {
   .home .login_container {
     min-width: 355px;
   }
+}
+
+
+/* Home Page Design Start */
+.index {
+  background: url(/images/Sprinkle.svg);
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+.nav_bar {
+  height: 70px;
+  background: url(/images/second.svg);
+  background-size: cover;
+  background-position: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+}
+.nav_bar .logout_btn {
+  border: none;
+  font-size: 14px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background: #057516;
+  cursor: pointer;
+  text-decoration: none;
+}
+.container-fluid .row .col .card {
+  background: #0e2a47;
+  color: #fff;
+  margin-bottom: 10px;
+  box-shadow: 1px 10px 50px 10px rgb(23, 22, 72);
 }

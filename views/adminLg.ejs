@@ -1,12 +1,19 @@
 <%-include('./partials/header.ejs') %>
 <main class="home flex-column">
         <div class="option">
-            <a href="/login">User Login</a>
-            <a href="/admin/">Admin Login</a>
+            <a style="text-decoration: none;" href="/login">User Login</a>
+            <a style="text-decoration: none;" href="/admin/">Admin Login</a>
         </div>
+        <%if(err) { %>
+            <div class="cls">
+                <h5 style="font-size: 18px;position:relative;letter-spacing: normal;" class="m-0 p-0"><%-err%>
+                </h5>
+                <a href="/admin/close"  class="material-symbols-outlined">close</a>
+            </div>
+            <% } %>
     <div class="login_container">
         <h1 class="text-center text-white">Admin Login</h1>
-        <form action="/login" method="post" class="form">
+        <form action="/admin/" method="post" class="form">
                     <div class="controls">
                         <div class="input input1">
                             <input type="email" name="email" id="mail">

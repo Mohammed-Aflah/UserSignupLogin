@@ -1,9 +1,15 @@
 <%-include('./partials/header.ejs') %>
     <main class="index">
-        <header class="pt-4">
-
-            <h2 class="text-white text-center">Welcome <%-user%></h2>
-        </header>
+        
+            <div class="option d-flex justify-content-between py-2 px-5">
+                <div class="d-flex  justify-content-center">
+                    <a style="text-decoration: none;" href="/">User View</a>
+                    <a style="text-decoration: none;" href="/admin/home">Admin View</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a style="text-decoration: none;" href="">View All Users</a>
+                </div>
+            </div>
         <div class="container-fluid">
             <div class="row mt-3">
                 <div

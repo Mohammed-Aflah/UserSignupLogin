@@ -23,7 +23,13 @@
         </div>
         <div class="links mx-5">
             <%if(logout) { %>
-                <a href="/logout" class="btn btn-primary"> Logout</a>
+                <a href="
+                <%if(adminLogout) {%>
+                    /admin/logout
+               <% }else{ %>
+                /logout
+             <%  } %>
+                " class="btn btn-primary"> Logout</a>
                 <% }%>
 
         </div>

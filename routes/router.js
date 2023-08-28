@@ -4,13 +4,13 @@ const useHelper = require("../controller/userControl");
 const { verifySignup } = require("../middlewares/middleware");
 router.get("/", verifySignup, (req, res) => {
   useHelper.getUserName(req.session.email).then((name) => {
-    res.render("index", { logout: true, user: name });
+    res.render("index", { logout: true, user: name, adminLogout: false });
   });
 });
 router
   .route("/signup")
   .get((req, res) => {
-    res.render("signup", { logout: false });
+    res.render("signup", { logout: false, adminLogout: false });
   })
   .post((req, res) => {
     console.log("reached");
@@ -33,7 +33,7 @@ router
     if (req.session.logined) {
       res.redirect("/");
     } else {
-      res.render("login", { logout: false, err: false });
+      res.render("login", { logout: false, err: false, adminLogout: false });
     }
   })
   // middle.verifySignup
@@ -54,6 +54,7 @@ router
           res.render("login", {
             logout: false,
             err: "Incorrect Username or Password",
+            adminLogout: false,
           });
         }
       })
@@ -61,7 +62,7 @@ router
         console.log("Error Occured in Login post" + err);
         res.render("login", {
           logout: false,
-          err: "Login Failed Please Try Again",
+          err: "Incorrect Username or Password",
         });
       });
   });
