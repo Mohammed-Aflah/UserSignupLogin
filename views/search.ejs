@@ -1,0 +1,74 @@
+<%-include('./partials/header.ejs') %>
+
+    <main class="index pt-5">
+        <div class="container search">
+
+        <div class=" text-right">
+
+            <a href="/admin/viewuser" class="closeButton text-right"><i class="fa-solid fa-xmark"></i></a>
+        </div>
+        <div class="option d-flex align-items-center justify-content-center pt-3">
+            <h1 class="text-white text-center">view users</h1>
+        </div>
+        <div class="option d-flex align-items-center justify-content-center ">
+            <form action="/admin/search" method="post">
+                <input type="search" class="srch" name="search" placeholder="Search username">
+                <button style="text-decoration: none;" class="sbtn" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="option d-flex align-items-center justify-content-end  ">
+            <a href="/admin/adduser" class="mr-5">Add User</a>
+        </div>
+        <table class="table table-dark container rounded my-0 mx-auto">
+            <thead>
+
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map((data,index)=>{ %>
+                    <tr>
+                        <td>
+                            <%-index+1%>
+                        </td>
+                        <td>
+                            <%-data.username%>
+                        </td>
+                        <td>
+                            <%-data.email%>
+                        </td>
+                        <td>
+                            <%-data.Date%>
+                        </td>
+                        <td>
+                            <a href="/admin/edit/<%-data._id%>" class="text-white">
+                                <lord-icon src="https://cdn.lordicon.com/qtqvorle.json" style="width: 30px;height:30px"
+                                    trigger="loop" delay="2000"
+                                    colors="outline:#121331,primary:#646e78,secondary:#ebe6ef,tertiary:#4cb4fd"
+                                    style="width:250px;height:250px">
+                                </lord-icon>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/admin/delete/<%-data._id%>" class="text-white"
+                                onclick="return confirm('Do you want to Remove <%-data.username%> ?')">
+                                <lord-icon src="https://cdn.lordicon.com/exkbusmy.json" style="width: 30px;height:30px"
+                                    trigger="loop" delay="2000"
+                                    colors="outline:#121331,primary:#646e78,secondary:#4bb3fd,tertiary:#ebe6ef"
+                                    style="width:250px;height:250px">
+                                </lord-icon>
+                                </i></a>
+                        </td>
+                    </tr>
+                    <% }) %>
+        </table>
+    </div>
+    </main>
+
+    <%-include('./partials/footer.ejs') %>

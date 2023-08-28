@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("./config");
-const schema=mongoose.Schema({
+const schema = mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -13,5 +13,9 @@ const schema=mongoose.Schema({
     type: String,
     required: true,
   },
+  Date: {
+    type: Date,
+    default: Date.now,
+  },
 });
-module.exports=mongoose.model('SignupData',schema)
+module.exports = mongoose.model("SignupData", schema);

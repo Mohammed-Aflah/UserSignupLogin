@@ -1,0 +1,41 @@
+<%-include('./partials/header.ejs') %>
+    <main class="home flex-column ">
+        <div class="option d-flex justify-content-end  w-100">
+            <a style="text-decoration: none;" href="/admin/viewuser" class="mr-5">Go Back <i class='bx bx-arrow-back'></i></a>
+        </div>
+        <div class="login_container">
+            <h1 class="text-center text-white mt-3">Add new User</h1>
+            <form action="/admin/adduser/" method="post" class="form">
+                <div class="controls">
+                    <div class="input input1">
+                        <input type="text" name="username"  placeholder="eg. john">
+                        <label for="" id="name" class="top">Username</label>
+                    </div>
+                    <div class="input input1">
+                        <input type="email" name="email"  placeholder="eg. example@gmail.com">
+                        <label for="" id="email" class="top">Email</label>
+                    </div>
+                    <div class="input input2">
+                        <input type="password" name="password" autocomplete="off" class="ps" placeholder="********" required>
+                        <img src="/images/visible.png" alt=""
+                            style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
+                        <label for="" id="passLabel" class="top">Password</label>
+                    </div>
+                    <div class="input input3">
+                        <button type="submit" id="sub_btn">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script>
+       var check= document.getElementById("check");
+       check.addEventListener('click',()=>{
+        if(document.querySelector(".ps").type=="password"){
+            document.querySelector(".ps").type="text"
+        }else{
+            document.querySelector(".ps").type="password"
+        }
+       })
+    </script>
+    <%-include('./partials/footer.ejs') %>

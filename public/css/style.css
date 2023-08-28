@@ -7,6 +7,9 @@
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
 }
+body{
+  background-color: #0e2a47;
+}
 .nav_bar {
   height: 70px;
   background: #0e2a47;
@@ -20,7 +23,7 @@
 .home {
   background: #023523;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
 }
 .option {
   height: auto;
@@ -29,13 +32,13 @@
   justify-self: center;
   margin-bottom: 10px;
 }
- .option a {
+ .option a,.sbtn {
   background-color: rgb(30, 107, 209);
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
   margin: 5px;
-  padding: 10px;
+  padding: 5px 10px;
   z-index: 99;
   position: relative;
   overflow: hidden;
@@ -226,4 +229,38 @@ h5 {
   color: #fff;
   margin-bottom: 10px;
   box-shadow: 1px 10px 50px 10px rgb(23, 22, 72);
+}
+.srch{
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 3px 10px;
+  font-size: 15px;
+  width: 300px;
+}
+.sbtn{
+  background-color: rgb(30, 107, 209);
+  padding: 0;
+  font-size: 15px;
+  height: 30px;
+  width: 100px;
+  border: none;
+  
+}
+.search{
+  background-color: #0e2a47;
+  /* border: 1px solid red; */
+  position: relative;
+  box-shadow: 1px 10px 50px 10px rgb(23, 22, 72);
+  padding: 10px;
+}
+.closeButton{
+  background-color: #104f92;
+  padding: 5px 10px;
+  border-radius: 50%;
+  color: #fff;
+}
+.closeButton:hover{
+  color: #fff;
 }
