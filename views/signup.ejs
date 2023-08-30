@@ -2,21 +2,29 @@
     <main class="home flex-column">
         <div class="login_container">
             <h1 class="text-center text-white mt-3">Signup</h1>
-            <form action="/signup" method="post" class="form">
+            <form action="/signup" method="post" class="form" enctype="multipart/form-data">
                 <div class="controls">
+                    <div class="image_area">
+                        <img src="/images/profile.png" alt="" id="imgd">
+                    </div>
                     <div class="input input1">
-                        <input type="text" name="username"  placeholder="eg. john">
+                        <input type="text" name="username" placeholder="eg. john">
                         <label for="" id="name" class="top">Username</label>
                     </div>
                     <div class="input input1">
-                        <input type="email" name="email"  placeholder="eg. example@gmail.com">
+                        <input type="email" name="email" placeholder="eg. example@gmail.com">
                         <label for="" id="email" class="top">Email</label>
                     </div>
                     <div class="input input2">
-                        <input type="password" name="password" autocomplete="off" class="ps" placeholder="********" required>
+                        <input type="password" name="password" autocomplete="off" class="ps" placeholder="********"
+                            required>
                         <img src="/images/visible.png" alt=""
                             style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
                         <label for="" id="passLabel" class="top">Password</label>
+                    </div>
+                    <div class="input input5 " style="display: flex;justify-content: center;border:none;">
+                        <input type="file" name="Image" onchange="displayImage(event)" id="upload" autocomplete="off" class="ps" value="../public/images/profile.png">
+                        <label for="upload" class="imgl">Add Profile<i class="fa-solid fa-image"></i></label>
                     </div>
                     <div class="input input3">
                         <button type="submit" id="sub_btn">Signup</button>
@@ -29,13 +37,17 @@
         </div>
     </main>
     <script>
-       var check= document.getElementById("check");
-       check.addEventListener('click',()=>{
-        if(document.querySelector(".ps").type=="password"){
-            document.querySelector(".ps").type="text"
-        }else{
-            document.querySelector(".ps").type="password"
+        var img = document.getElementById("imgd")
+        function displayImage(e) {
+            img.src = URL.createObjectURL(event.target.files[0])
         }
-       })
+        var check = document.getElementById("check");
+        check.addEventListener('click', () => {
+            if (document.querySelector(".ps").type == "password") {
+                document.querySelector(".ps").type = "text"
+            } else {
+                document.querySelector(".ps").type = "password"
+            }
+        })
     </script>
     <%-include('./partials/footer.ejs') %>

@@ -15,7 +15,10 @@ const schema = mongoose.Schema({
   },
   Date: {
     type: Date,
-    default: Date.now,
+  },
+  hasImg: {
+    type: Boolean,
+    default: false,
   },
 });
 module.exports = mongoose.model("SignupData", schema);

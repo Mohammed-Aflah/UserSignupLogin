@@ -6,8 +6,15 @@
         </div>
         <div class="login_container">
             <h1 class="text-center text-white mt-3">Update User</h1>
-            <form action="/admin/edit/<%-data._id%>" method="post" class="form">
+            <form action="/admin/edit/<%-data._id%>" method="post" class="form" enctype="multipart/form-data">
                 <div class="controls">
+                    <div class="image_area">
+                        <%if(data.hasImg){%>
+                            <img src="/profile-images/<%-data._id%>.jpg" alt="" id="imgd">
+                       <%}else{%>
+                        <img src="/images/profile.png" alt="" id="imgd">
+                       <%}%>
+                    </div>
                     <div class="input input1">
                         <input type="text" name="username" placeholder="eg. john" value="<%- data.username %>">
                         <label for="" id="name" class="top">Username</label>
@@ -15,6 +22,10 @@
                     <div class="input input1">
                         <input type="email" name="email" placeholder="eg. example@gmail.com" value="<%- data.email %>">
                         <label for="" id="email" class="top">Email</label>
+                    </div>
+                    <div class="input input5 " style="display: flex;justify-content: center;border:none;">
+                        <input type="file" name="Image" onchange="displayImage(event)" id="upload" autocomplete="off" class="ps" value="../public/images/profile.png">
+                        <label for="upload" class="imgl">Add Profile<i class="fa-solid fa-image"></i></label>
                     </div>
                     <div class="input input3">
                         <button type="submit" id="sub_btn">Update</button>
@@ -24,6 +35,10 @@
         </div>
     </main>
     <script>
+        var img = document.getElementById("imgd")
+        function displayImage(e) {
+            img.src = URL.createObjectURL(event.target.files[0])
+        }
         var check = document.getElementById("check");
         check.addEventListener('click', () => {
             if (document.querySelector(".ps").type == "password") {

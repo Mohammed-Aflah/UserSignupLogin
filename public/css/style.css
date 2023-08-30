@@ -7,18 +7,27 @@
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
 }
-body{
+body {
   background-color: #0e2a47;
 }
 .nav_bar {
   height: 70px;
-  background: #0e2a47;
+  background: #230a61;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   /* border-bottom: 1px dotted blue; */
   z-index: 99;
+}
+.nav_bar .logo{
+  background-color: #0e2a47;
+  text-decoration:none ;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
 }
 .home {
   background: #023523;
@@ -32,7 +41,8 @@ body{
   justify-self: center;
   margin-bottom: 10px;
 }
- .option a,.sbtn {
+.option a,
+.sbtn {
   background-color: rgb(30, 107, 209);
   color: #fff;
   text-decoration: none;
@@ -56,7 +66,7 @@ body{
   z-index: -1;
   border-radius: 5px;
 }
- .option a:hover::after {
+.option a:hover::after {
   width: 100%;
   color: #fff;
   text-decoration: none;
@@ -115,11 +125,23 @@ h5 {
   margin-top: 20px;
 }
 .home .login_container .controls {
-  height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.home .login_container .controls .image_area{
+  width: 200px;
+  border-radius:50% ;
+  margin: 10px;
+  height: 200px;
+
+}
+.home .login_container .controls .image_area img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .home .login_container .controls .input {
   width: 60%;
@@ -131,6 +153,9 @@ h5 {
   border-radius: 5px;
   justify-content: center;
   position: relative;
+}
+.home .login_container .controls .input .itms{
+  background:linear-gradient(to right,#2A5470,#4C4177);
 }
 .home .login_container .controls .input input {
   background: transparent;
@@ -195,7 +220,6 @@ h5 {
   }
 }
 
-
 /* Home Page Design Start */
 .index {
   background: url(/images/Sprinkle.svg);
@@ -230,7 +254,7 @@ h5 {
   margin-bottom: 10px;
   box-shadow: 1px 10px 50px 10px rgb(23, 22, 72);
 }
-.srch{
+.srch {
   height: 30px;
   border-radius: 5px;
   border: none;
@@ -239,28 +263,44 @@ h5 {
   font-size: 15px;
   width: 300px;
 }
-.sbtn{
+.sbtn {
   background-color: rgb(30, 107, 209);
   padding: 0;
   font-size: 15px;
   height: 30px;
   width: 100px;
   border: none;
-  
 }
-.search{
+.search {
   background-color: #0e2a47;
   /* border: 1px solid red; */
   position: relative;
   box-shadow: 1px 10px 50px 10px rgb(23, 22, 72);
   padding: 10px;
 }
-.closeButton{
+.closeButton {
   background-color: #104f92;
   padding: 5px 10px;
   border-radius: 50%;
   color: #fff;
 }
-.closeButton:hover{
+.closeButton:hover {
   color: #fff;
+}
+input[type="file"]{
+  display: none;
+}
+
+.imgl{
+  
+  min-width: 120px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  padding: 0 5px;
+  margin: auto;
 }

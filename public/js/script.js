@@ -8,7 +8,7 @@ let subBtn = document.querySelector("#sub_btn");
 let form = document.querySelector(".form");
 const timer = document.querySelector("#sp");
 function load(status) {
-  console.log('reached');
+  console.log("reached");
   if (status) {
     let remainingTime = 600;
     const interval = setInterval(() => {

@@ -1,6 +1,6 @@
 <%-include('./partials/header.ejs') %>
 
-    <main class="index ">
+    <main class="index pb-5">
         <div class="option d-flex align-items-center justify-content-center pt-3">
             <h1 class="text-white text-center">view users</h1>
         </div>
@@ -10,8 +10,9 @@
                 <button style="text-decoration: none;" class="sbtn" type="submit">Search</button>
             </form>
         </div>
-        <div class="option d-flex align-items-center justify-content-end  ">
-            <a href="/admin/adduser" class="mr-5">Add User</a>
+        <div class="option d-flex align-items-center justify-content-between container">
+            <a style="text-decoration: none;" class="m-0" href="/admin/">Go Back <i class='bx bx-arrow-back'></i></a>
+            <a href="/admin/adduser" class="m-0">Add User</a>
         </div>
         <table class="table table-dark container rounded my-0 mx-auto">
             <thead>
@@ -21,6 +22,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">profile</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -38,7 +41,20 @@
                             <%-data.email%>
                         </td>
                         <td>
-                            <%-data.Date%>
+                            <% let d = new Date(data.Date) %>
+                            <%-d.getDate() %>/<%- d.getMonth()+1 %>/<%-d.getFullYear()%>
+                        </td>
+                        <td>
+
+                            <%-d.getHours()%> : <%-d.getMinutes()%>
+                        </td>
+                        <td>
+                            <% if(data.hasImg){%>
+
+                                <img src="/profile-images/<%-data._id%>.jpg" style="height: 50px;width:50px;border-radius: 50%;" alt="">
+                           <%}else{%>
+                                <img src="/images/profile.png" alt="" style="height: 50px;width:50px;border-radius: 50%;">
+                               <%}%>
                         </td>
                         <td>
                             <a href="/admin/edit/<%-data._id%>" class="text-white">

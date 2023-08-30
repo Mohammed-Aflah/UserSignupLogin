@@ -1,5 +1,5 @@
 <%-include('./partials/header.ejs') %>
-<main class="home flex-column">
+    <main class="home flex-column">
         <div class="option">
             <a style="text-decoration: none;" href="/login">User Login</a>
             <a style="text-decoration: none;" href="/admin/">Admin Login</a>
@@ -8,34 +8,32 @@
             <div class="cls">
                 <h5 style="font-size: 18px;position:relative;letter-spacing: normal;" class="m-0 p-0"><%-err%>
                 </h5>
-                <a href="/admin/close"  class="material-symbols-outlined">close</a>
+                <a href="/admin/close" class="material-symbols-outlined">close</a>
             </div>
             <% } %>
-    <div class="login_container">
-        <h1 class="text-center text-white">Admin Login</h1>
-        <form action="/admin/" method="post" class="form">
-                    <div class="controls">
-                        <div class="input input1">
-                            <input type="email" name="email" id="mail">
-                            <label for="" id="email">Email</label>
+                <div class="login_container">
+                    <h1 class="text-center text-white">Admin Login</h1>
+                    <form action="/admin/" method="post" class="form">
+                        <div class="controls">
+                            <div class="input input1">
+                                <input type="email" name="email" id="mail">
+                                <label for="" id="email">Email</label>
+                            </div>
+                            <div class="input input2">
+                                <input type="password" name="password" id="pass" autocomplete="off" required>
+                                <img src="/images/visible.png" alt=""
+                                    style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
+                                <label for="" id="passLabel">Password</label>
+                            </div>
+                            <div class="input input3">
+                                <button type="submit" id="sub_btn">Login</button>
+                            </div>
+                            <!-- <div class="input input3 text-right d-flex align-items-center justify-content-end">
+                                <a href="/signup" class="text-left text-decoration-none">Signup</a>
+                            </div> -->
                         </div>
-                        <div class="input input2">
-                            <input type="password" name="password" id="pass" autocomplete="off" required>
-                            <img src="/images/visible.png" alt=""
-                                style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
-                            <label for="" id="passLabel">Password</label>
-                        </div>
-                        <div class="input input3">
-                            <button type="submit" id="sub_btn">Login</button>
-                        </div>
-                        <div class="input input3 text-right d-flex align-items-center justify-content-end">
-                            <a href="/signup" class="text-left text-decoration-none">Signup</a>
-                        </div>
-                    </div>
-        </form>
-    </div>
-</main>
+                    </form>
+                </div>
+    </main>
 
     <%-include('./partials/footer.ejs') %>
-
-    

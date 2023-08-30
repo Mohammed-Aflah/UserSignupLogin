@@ -3,8 +3,8 @@ const router = express.Router();
 const useHelper = require("../controller/userControl");
 const { verifySignup } = require("../middlewares/middleware");
 router.get("/", verifySignup, (req, res) => {
-  useHelper.getUserName(req.session.email).then((name) => {
-    res.render("index", { logout: true, user: name, adminLogout: false });
+  useHelper.getUserName(req.session.email).then((userData) => {
+    res.render("index", { logout: true, userData, adminLogout: false });
   });
 });
 router
@@ -20,7 +20,25 @@ router
         console.log(`data is ${result}`);
         req.session.username = result.username;
         req.session.email = result.email;
-        res.redirect("/login");
+        let id = result._id;
+        if (req.files && req.files.Image !== null) {
+          let image = req.files.Image;
+          image.mv("./public/profile-images/" + id + ".jpg", (err) => {
+            if (err) {
+              console.log("image upload err" + err);
+            } else {
+              useHelper.ImageStatus(id, true).then(() => {
+                console.log("checked__________");
+              });
+            }
+          });
+        } else {
+          useHelper.ImageStatus(id, false).then(() => {
+            console.log("false check");
+          });
+        }
+        req.session.logined = true;
+        res.redirect("/");
         console.log("inserted");
       })
       .catch((err) => {
@@ -72,5 +90,10 @@ router.get("/logout", (req, res) => {
 });
 router.get("/close", (req, res) => {
   res.redirect("/login");
+});
+router.get("/profile/:id", (req, res) => {
+  useHelper.getProfileData(req.params.id).then((userData) => {
+    res.render("profile", { logout: true, adminLogout: false, userData });
+  });
 });
 module.exports = router;

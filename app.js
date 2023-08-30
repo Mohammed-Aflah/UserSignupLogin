@@ -5,7 +5,9 @@ const port = process.env.PORT;
 const session = require("express-session");
 const router = require("./routes/router");
 const admiRoute = require("./routes/adminroute");
+const filUpload=require('express-fileupload')
 // const nocache=require('nocache')
+app.use(filUpload())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Accessing Request Body value in Readable format
 app.use((req, res, next) => {

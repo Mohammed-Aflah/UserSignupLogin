@@ -37,22 +37,33 @@ function getAllusers() {
 }
 function Adduser(userData) {
   return new Promise(async (resolve, reject) => {
-    userData.password = await bcrypt.hash(userData.password, 10);
-    let insert = await new Database({
-      username: userData.username,
-      email: userData.email,
-      password: userData.password,
-    })
-      .save()
-      .then((response) => {
-        resolve(response);
-      });
+    try {
+      userData.password = await bcrypt.hash(userData.password, 10);
+      let insert = await new Database({
+        username: userData.username,
+        email: userData.email,
+        password: userData.password,
+        Date:Date.now()
+      })
+        .save()
+        .then((response) => {
+          resolve(response);
+        });
+    } catch (err) {
+      console.log("Error Occured on Adduser in Admin");
+      reject(err);
+    }
   });
 }
 function DeleteUser(userId) {
   return new Promise(async (resolve, reject) => {
-    let deleted = await Database.deleteOne({ _id: new ObjectId(userId) });
-    resolve(deleted);
+    try {
+      let deleted = await Database.deleteOne({ _id: new ObjectId(userId) });
+      resolve(deleted);
+    } catch (err) {
+      console.log('Error occured on Delete User');
+      reject(err)
+    }
   });
 }
 function getEditData(userId) {
@@ -73,7 +84,7 @@ function updateUser(userId, userData) {
 function searchUser(userName) {
   return new Promise(async (resolve, reject) => {
     // let regextPattern = new RegExp(userName);
-    let serachData = await Database.find({username: userName.search});
+    let serachData = await Database.find({ username: userName.search });
     console.log(`Search Data ${serachData} aslkfdj`);
     resolve(serachData);
   });

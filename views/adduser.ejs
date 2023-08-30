@@ -4,9 +4,12 @@
             <a style="text-decoration: none;" href="/admin/viewuser" class="mr-5">Go Back <i class='bx bx-arrow-back'></i></a>
         </div>
         <div class="login_container">
-            <h1 class="text-center text-white mt-3">Add new User</h1>
-            <form action="/admin/adduser/" method="post" class="form">
+            <h1 class="text-center text-white mt-3">Add User</h1>
+            <form action="/admin/adduser/" method="post" class="form" enctype="multipart/form-data">
                 <div class="controls">
+                    <div class="image_area">
+                        <img src="/images/profile.png" alt="" id="imgd">
+                    </div>
                     <div class="input input1">
                         <input type="text" name="username"  placeholder="eg. john">
                         <label for="" id="name" class="top">Username</label>
@@ -21,6 +24,10 @@
                             style="width: 20px;height:20px;margin-right:5px;cursor:pointer" id="check">
                         <label for="" id="passLabel" class="top">Password</label>
                     </div>
+                    <div class="input input5 " style="display: flex;justify-content: center;border:none;">
+                        <input type="file" name="Image" onchange="displayImage(event)" id="upload" autocomplete="off" class="ps" value="../public/images/profile.png">
+                        <label for="upload" class="imgl">Add Profile<i class="fa-solid fa-image"></i></label>
+                    </div>
                     <div class="input input3">
                         <button type="submit" id="sub_btn">Add</button>
                     </div>
@@ -29,6 +36,10 @@
         </div>
     </main>
     <script>
+        var img = document.getElementById("imgd")
+        function displayImage(e) {
+            img.src = URL.createObjectURL(event.target.files[0])
+        }
        var check= document.getElementById("check");
        check.addEventListener('click',()=>{
         if(document.querySelector(".ps").type=="password"){
