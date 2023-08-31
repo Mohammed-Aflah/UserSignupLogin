@@ -27,6 +27,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">profile</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>
@@ -44,7 +46,19 @@
                                 <%-data.email%>
                             </td>
                             <td>
-                                <%-data.Date%>
+                                <% let d = new Date(data.Date) %>
+                                <%-d.getDate() %>/<%- d.getMonth()+1 %>/<%-d.getFullYear()%>
+                            </td>
+                            <td>
+                                <%-d.getHours()%> : <%-d.getMinutes()%>
+                            </td>
+                            <td>
+                                <% if(data.hasImg){%>
+    
+                                    <img src="/profile-images/<%-data._id%>.jpg" style="height: 50px;width:50px;border-radius: 50%;" alt="">
+                               <%}else{%>
+                                    <img src="/images/profile.png" alt="" style="height: 50px;width:50px;border-radius: 50%;">
+                                   <%}%>
                             </td>
                             <td>
                                 <a href="/admin/edit/<%-data._id%>" class="text-white">

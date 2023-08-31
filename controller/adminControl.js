@@ -88,6 +88,12 @@ function searchUser(userName) {
     resolve(serachData);
   });
 }
+function getProfileData(id) {
+  return new Promise(async (resolve, reject) => {
+    let data = await Database.findOne({ _id: new ObjectId(id) });
+    resolve(data);
+  });
+}
 module.exports = {
   ValidateAdmin,
   getAllusers,
@@ -96,4 +102,5 @@ module.exports = {
   getEditData,
   updateUser,
   searchUser,
+  getProfileData,
 };
