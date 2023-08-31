@@ -94,7 +94,10 @@ router.get("/delete/:id", (req, res) => {
     .DeleteUser(req.params.id)
     .then(() => {
       let id = req.params.id;
-      fs.unlinkSync("./public/profile-images/" + id + ".jpg");
+      let filestatus = fs.existsSync("./public/profile-images/" + id + ".jpg");
+      if (filestatus) {
+        fs.unlinkSync("./public/profile-images/" + id + ".jpg");
+      }
       res.redirect("/admin/viewuser");
     })
     .catch((err) => {
