@@ -8,9 +8,6 @@ const Database = require("../models/db");
 const bcrypt = require("bcrypt");
 function ValidateAdmin(adminData) {
   try {
-    console.log(
-      "admin data ______-" + adminData.email + "  " + adminData.password
-    );
     const { email, password } = adminData;
     const { adminusername, adminpasssword } = adminCredential;
     return new Promise((resolve, reject) => {
@@ -43,7 +40,7 @@ function Adduser(userData) {
         username: userData.username,
         email: userData.email,
         password: userData.password,
-        Date:Date.now()
+        Date: Date.now(),
       })
         .save()
         .then((response) => {
@@ -61,8 +58,8 @@ function DeleteUser(userId) {
       let deleted = await Database.deleteOne({ _id: new ObjectId(userId) });
       resolve(deleted);
     } catch (err) {
-      console.log('Error occured on Delete User');
-      reject(err)
+      console.log("Error occured on Delete User");
+      reject(err);
     }
   });
 }
@@ -84,8 +81,10 @@ function updateUser(userId, userData) {
 function searchUser(userName) {
   return new Promise(async (resolve, reject) => {
     // let regextPattern = new RegExp(userName);
-    let serachData = await Database.find({ username: userName.search });
-    console.log(`Search Data ${serachData} aslkfdj`);
+    let search = userName.search || "";
+    let serachData = await Database.find({
+      username: { $regex: "^" + search, $options: "i" },
+    }).lean();
     resolve(serachData);
   });
 }
