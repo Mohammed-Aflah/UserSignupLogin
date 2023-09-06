@@ -56,3 +56,13 @@ document.querySelector(".home").addEventListener("click", () => {
     label.classList.remove("top");
   }
 });
+subBtn.addEventListener("click", () => {
+  if (email.value == "") {
+    alert("Please fill the Email section");
+    return;
+  }
+  if (password.value == "") {
+    alert("Please fill the Password Section");
+    return;
+  }
+});
