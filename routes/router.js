@@ -17,7 +17,6 @@ router
     useHelper
       .Signup(req.body)
       .then((result) => {
-        console.log(`data is ${result}`);
         req.session.username = result.username;
         req.session.email = result.email;
         let id = result._id;
@@ -56,12 +55,9 @@ router
   })
   // middle.verifySignup
   .post((req, res) => {
-    console.log("Login email " + req.body.email);
-    console.log("Login Password " + req.body.password);
     useHelper
       .Login(req.body)
       .then((result) => {
-        console.log("hashed result_______" + result.status);
         if (result.status) {
           req.session.logined = true;
           req.session.email = req.body.email;

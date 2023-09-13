@@ -223,6 +223,7 @@ h5 {
 /* Home Page Design Start */
 .index {
   background: url(/images/Sprinkle.svg);
+  background-attachment: fixed;
   min-height: 100vh;
   background-size: cover;
   background-position: center;

@@ -110,7 +110,6 @@ router
     adminHelper
       .getEditData(req.params.id)
       .then((data) => {
-        console.log("edit data_________" + data);
         res.render("edituser", {
           logout: true,
           adminLogout: true,
